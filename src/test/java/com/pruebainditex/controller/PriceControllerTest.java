@@ -85,4 +85,62 @@ public class PriceControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(testPrice, response.getBody());
     }
+
+    @Test
+    public void testGetPrice10hDia14Zara() {
+        Price testPrice = new Price();
+        when(priceService.findByBrandAndProductAndDate(any(), any(), any())).thenReturn(testPrice);
+
+        ResponseEntity<Price> response = priceController.getPrice(
+                LocalDateTime.of(2023, 6, 14, 10, 0), 35455L, 1L);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(testPrice, response.getBody());
+    }
+
+    @Test
+    public void testGetPrice16hDia14Zara() {
+        Price testPrice = new Price();
+        when(priceService.findByBrandAndProductAndDate(any(), any(), any())).thenReturn(testPrice);
+
+        ResponseEntity<Price> response = priceController.getPrice(
+                LocalDateTime.of(2023, 6, 14, 16, 0), 35455L, 1L);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(testPrice, response.getBody());
+    }
+
+    @Test
+    public void testGetPrice21hDia14Zara() {
+        Price testPrice = new Price();
+        when(priceService.findByBrandAndProductAndDate(any(), any(), any())).thenReturn(testPrice);
+
+        ResponseEntity<Price> response = priceController.getPrice(
+                LocalDateTime.of(2023, 6, 14, 21, 0), 35455L, 1L);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(testPrice, response.getBody());
+    }
+    @Test
+    public void testGetPrice10hDia15Zara() {
+        Price testPrice = new Price();
+        when(priceService.findByBrandAndProductAndDate(any(), any(), any())).thenReturn(testPrice);
+
+        ResponseEntity<Price> response = priceController.getPrice(
+                LocalDateTime.of(2023, 6, 15, 10, 0), 35455L, 1L);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(testPrice, response.getBody());
+    }
+    @Test
+    public void testGetPrice21hDia16Zara() {
+        Price testPrice = new Price();
+        when(priceService.findByBrandAndProductAndDate(any(), any(), any())).thenReturn(testPrice);
+
+        ResponseEntity<Price> response = priceController.getPrice(
+                LocalDateTime.of(2023, 6, 16, 21, 0), 35455L, 1L);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(testPrice, response.getBody());
+    }
 }
