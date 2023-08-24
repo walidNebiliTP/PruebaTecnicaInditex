@@ -44,11 +44,11 @@ public class PriceController {
         priceService.deletePrice(priceId);
     }
 
-    @GetMapping
-    public ResponseEntity<Price> getPrice(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date,
+    @GetMapping("/getPrice")
+    public ResponseEntity<Price> getPriceByBrandIdAndProductIdAndStartDate(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date,
                                           @RequestParam("productId") Long productId,
                                           @RequestParam("brandId") Long brandId) {
-        Price price = priceService.findByBrandAndProductAndDate(date, productId, brandId);
+        Price price = priceService.findByBrandIdAndProductIdAndStartDate(date, productId, brandId);
 
         if (price != null) {
             return ResponseEntity.ok(price);

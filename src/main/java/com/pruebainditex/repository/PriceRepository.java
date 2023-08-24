@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PriceRepository extends JpaRepository<Price, Long> {
-    List<Price> findByBrandAndProductAndDate(
-            Long brandId, Long productId, LocalDateTime startDate, LocalDateTime endDate);
+    List<Price> findByBrandIdAndProductIdAndStartDate(
+            Long brandId, Long productId, LocalDateTime startDate);
 }
 

@@ -34,9 +34,9 @@ public class PriceService {
     public List<Price> findAllPrices() {
         return priceRepository.findAll();
     }
-    public Price findByBrandAndProductAndDate(LocalDateTime date, Long productId, Long brandId) {
-        List<Price> prices = priceRepository.findByBrandAndProductAndDate(
-                brandId, productId, date, date);
+    public Price findByBrandIdAndProductIdAndStartDate(LocalDateTime startDate, Long productId, Long brandId) {
+        List<Price> prices = priceRepository.findByBrandIdAndProductIdAndStartDate(
+                brandId, productId, startDate);
 
         if (!prices.isEmpty()) {
             return prices.get(0);
