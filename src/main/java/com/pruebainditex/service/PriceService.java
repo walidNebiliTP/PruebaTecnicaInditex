@@ -4,6 +4,7 @@ import com.pruebainditex.entity.Price;
 import com.pruebainditex.repository.PriceRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -32,6 +33,16 @@ public class PriceService {
 
     public List<Price> findAllPrices() {
         return priceRepository.findAll();
+    }
+    public Price findByBrandAndProductAndDate(LocalDateTime date, Long productId, Long brandId) {
+        List<Price> prices = priceRepository.findByBrandAndProductAndDate(
+                brandId, productId, date, date);
+
+        if (!prices.isEmpty()) {
+            return prices.get(0);
+        }
+
+        return null; // No price found
     }
 }
 

@@ -2,8 +2,11 @@ package com.pruebainditex.controller;
 
 import com.pruebainditex.entity.Price;
 import com.pruebainditex.service.PriceService;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -41,4 +44,16 @@ public class PriceController {
         priceService.deletePrice(priceId);
     }
 
+    @GetMapping
+    public ResponseEntity<Price> getPrice(@RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date,
+                                          @RequestParam("productId") Long productId,
+                                          @RequestParam("brandId") Long brandId) {
+        Price price = priceService.findByBrandAndProductAndDate(date, productId, brandId);
+
+        if (price != null) {
+            return ResponseEntity.ok(price);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
